@@ -84,6 +84,9 @@ function build_xcproject_project() {
 function create_google_xcframework() {
   framework_name=$1
 
+  cp "../../Plists/$framework_name.xcframework/ios-arm64/$framework_name.framework/Info.plist" "$framework_name.xcframework/ios-arm64/$framework_name.framework/Info.plist"
+  cp "../../Plists/$framework_name.xcframework/ios-x86_64-simulator/$framework_name.framework/Info.plist" "$framework_name.xcframework/ios-arm64_x86_64-simulator/$framework_name.framework/Info.plist"
+
   # Compress the XCFramework.
   zip -r -X "$framework_name.xcframework.zip" "$framework_name.xcframework/"
 
